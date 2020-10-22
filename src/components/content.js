@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-
+// class component that displays the current time
 export class Content extends React.Component {
 
 
