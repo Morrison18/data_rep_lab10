@@ -4,7 +4,7 @@ import { Movies } from './movies'; //import component
 
 export class Read extends React.Component{
 
-// state is an object with a movies array 
+// state is an object with a movies array in it in the movies array is JSON data
     state = {
         movies:[ 
             {
@@ -12,7 +12,7 @@ export class Read extends React.Component{
                 "Year": "2018",
                 "imdbID": "tt4154756",
                 "Type": "movie",
-                "Poster": "https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_SX300.jpg"
+                "Poster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
 
             },
             {
