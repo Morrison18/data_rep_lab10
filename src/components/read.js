@@ -1,48 +1,38 @@
 import React from 'react';
 import { Movies } from './movies'; //import component 
+import axios from 'axios'; // promised based HTTP client npm install axios
 
+export class Read extends React.Component {
 
-export class Read extends React.Component{
-
-// state is an object with a movies array in it in the movies array is JSON data
+    // state is an object with a movies array in it 
     state = {
-        movies:[ 
-            {
-                "Title": "Avengers: Infinity War",
-                "Year": "2018",
-                "imdbID": "tt4154756",
-                "Type": "movie",
-                "Poster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
-
-            },
-            {
-                "Title": "Captain America Civil War",
-                "Year": "2016",
-                "imdbID": "tt3498820",
-                "Type": "movie",
-                "Poster": "https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_SX300.jpg"
-
-            },
-            {
-                "Title": "Charlie Wilson's War",
-                "Year": "2007",
-                "imdbID": "tt0472062",
-                "Type": "movie",
-                "Poster": "https://m.media-amazon.com/images/M/MV5BMTgwMDgwMDc4MF5BMl5BanBnXkFtZTYwOTU3MDM4._V1_SX300.jpg"
-
-            },
-
-        ]
+        movies: []
     };
-    render(){
-        return(
+    // when this is visible in the web app the method gets executed
+    componentDidMount() {
+        //this package is getting JSON data from the url  and returns a promise 
+        axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')
+            .then(
+                (response) => {
+                    //setting state to be equal to movies array
+                    this.setState({ movies: response.data.Search })
+                }
+            )// if an error occurs error hgets logged to the console
+            .catch(
+                (error) => {
+                    console.log('Error')
+                }
+            );
+    }
+    render() {
+        return (
             //embedded Movies component into read.js
             <div>
                 <h3>
                     Hello from read component.
                 </h3>
-                
-               <Movies movies={this.state.movies}></Movies>
+
+                <Movies movies={this.state.movies}></Movies>
             </div>
         );
     }
