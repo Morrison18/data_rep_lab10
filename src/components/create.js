@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export class Create extends React.Component {
     
@@ -45,6 +46,19 @@ export class Create extends React.Component {
         // this stops us from calling the button multiple times
         e.preventDefault();
         alert("Movie: " + this.state.Title + " " + this.state.Year + " " + this.state.Poster);
+        
+        const newMovie = {
+            Title: this.state.Title,
+            Year: this.state.Year,
+            Poster: this.state.Poster
+        };
+        // on submit passes the data from the form up to server
+        axios.post('http://localhost:4000/api/movies', newMovie)
+        // call back fuction that gets exe when comes back and logs to console
+        .then(response => console.log(response.data))
+        // have an error logs to console
+        .catch(error => console.log(error));
+
     }
 
     render() {

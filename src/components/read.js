@@ -11,11 +11,11 @@ export class Read extends React.Component {
     // when this is visible in the web app the method gets executed
     componentDidMount() {
         //this package is getting JSON data from the url  and returns a promise 
-        axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')
+        axios.get('http://localhost:4000/api/movies')
             .then(
                 (response) => {
                     //setting state to be equal to movies array
-                    this.setState({ movies: response.data.Search })
+                    this.setState({ movies: response.data.movies })
                 }
             )// if an error occurs error hgets logged to the console
             .catch(
