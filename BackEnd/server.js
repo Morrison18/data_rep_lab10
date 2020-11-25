@@ -48,15 +48,24 @@ app.get('/api/movies', (req, res)=>{
     })
    
 })
-// 
+// this allow you to get the movie data from the DB with the id 
 app.get('/api/movies/:id', (req,res)=>{
 
     console.log(req.params.id);
-
+// finds the movie by the id 
     movieModel.findById(req.params.id, (err,data)=>{
         res.json(data);
     })
 })
+// listens for delete method 
+app.delete('/api/movies/:id', (req, res)=>{ 
+    console.log(req.params.id);
+//
+    movieModel.deleteOne({ _id: req.params.id }, function (err, data) {
+        if (err) res.send(err);
+              res.send(data);
+            })
+        })
 
 //when data passed up this takes the data and includes it into the array
 app.post('/api/movies', (req, res)=>{
