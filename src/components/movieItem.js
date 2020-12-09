@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card'; // import the bootstrap card 
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-
+import {Link} from 'react-router-dom';
 export class MovieItem extends React.Component{
     
     constructor(){ 
@@ -36,7 +36,7 @@ export class MovieItem extends React.Component{
     </Card.Text>
    <p style={{fontSize: '30px'}}>{this.props.movie.Year}</p>
   </Card.Body>
-
+<Link to={"/edit/"+ this.props.movie._id} className="btn btn-primary">Edit</Link>
 <Button variant="danger" onClick={this.DeleteMovie}>Delete</Button>
 </Card>
             </div>
